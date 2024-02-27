@@ -1,0 +1,75 @@
+/* App.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 1000px;
+  margin: auto;
+margin-top: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center text and inline elements */
+  background: linear-gradient(135deg, #fdfcfb, #e2e1e0); /* Gradient background */
+}
+
+h1 {
+  color: #2f80ed; /* Main color */
+  margin-bottom: 20px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block; /* Ensure labels are block-level elements for centering */
+  margin-bottom: 10px; /* Add margin for spacing */
+  color: #444; /* Label color */
+}
+
+select, textarea {
+  width: calc(100% - 22px); /* Adjust width */
+  padding: 10px;
+  margin: 0 auto; /* Center block elements */
+  margin-bottom: 20px; /* Add margin for spacing */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Input background color */
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%232f80ed' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+textarea {
+  height: 150px;
+  resize: none; /* Disable resizing */
+}
+
+button {
+  background-color: #2f80ed; /* Main color */
+  color: #fff;
+  border: none;
+  padding: 12px 20px; /* Adjust padding */
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Add smooth transition */
+}
+
+button:hover {
+  background-color: #256bd4; /* Darker color on hover */
+  box-shadow: 0 6px 12px rgba(47, 128, 237, 0.4); /* Add shadow */
+}
