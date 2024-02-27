@@ -10,6 +10,8 @@ export default function App() {
   const [text, setText] = useState("");
   const [language, setLanguage] = useState("en");
   const [result, setResult] = useState({});
+  const [score, setScore] = useState(0);
+  const [underlineColor, setUnderlineColor] = useState("black");
 
   const handleTextChange = (event) => {
     setText(event.target.value);
@@ -22,24 +24,45 @@ export default function App() {
   useEffect(() => {
     const sentiment = new Sentiment();
     sentiment.registerLanguage("fr", { labels: sentimentFrench });
-    setResult(sentiment.analyze(text, { language }));
+    const analysis = sentiment.analyze(text, { language });
+    setResult(analysis);
+    setScore(analysis.score);
+
+    // Update underline color based on sentiment score
+    if (analysis.score > 0) {
+      setUnderlineColor("green");
+    } else if (analysis.score < 0) {
+      setUnderlineColor("red");
+    } else {
+      setUnderlineColor("black");
+    }
   }, [text, language]);
 
   return (
     <div className="App">
       <h1>Hello Sentiment</h1>
-
+      <p>
+        Input text in here and see{" "}
+        <a href="https://github.com/thisandagain/sentiment">
+          thisandagain/sentiment
+        </a>{" "}
+        in action.
+      </p>
       <label>Language:</label>{" "}
       <select value={language} onChange={handleLanguageChange}>
         <option value="en">English</option>
+        <option value="fr">French</option>
       </select>
       <br />
       <textarea
         value={text}
         onChange={handleTextChange}
-        placeholder="Enter text here..."
+        placeholder="Type something..."
+        style={{ borderBottom: `2px solid ${underlineColor}` }}
       />
-      <button>Submit</button>
+      <div style={{ borderBottom: `2px solid ${underlineColor}`,color: underlineColor}}>
+        Score: {score}
+      </div>
       <SyntaxHighlighter language="javascript" style={dracula}>
         {beautify(result, null, 2, 100)}
       </SyntaxHighlighter>
